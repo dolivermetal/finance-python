@@ -1,0 +1,12 @@
+logging:
+  level: DEBUG
+  format: '%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] - %(message)s'
+
+database:
+  user: finance_adm
+  password: finance_adm1234
+  host: localhost
+  port: 5432
+  database: finance
+  echo: True
+  expire_on_commit: False
