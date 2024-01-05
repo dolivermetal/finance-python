@@ -1,5 +1,5 @@
 logging:
-  level: DEBUG
+  level: INFO
   format: '%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] - %(message)s'
 
 database:
@@ -8,5 +8,5 @@ database:
   host: localhost
   port: 5432
   database: finance
-  echo: True
+  echo: False
   expire_on_commit: False

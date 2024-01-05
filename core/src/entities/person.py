@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, BigInteger, DateTime
 
 from core.src.config.base import Base
-from core.src.exceptions.invalid_data import InvalidDataException
+from core.src.exceptions.illegal_argument_exception import IllegalArgumentException
 
 
 class Person(Base):
@@ -27,7 +27,7 @@ class Person(Base):
 
     def validate(self):
         if not self.code:
-            raise InvalidDataException("code can't be null or empty")
+            raise IllegalArgumentException("code can't be null or empty")
 
         if not self.name:
-            raise InvalidDataException("name can't be null or empty")
+            raise IllegalArgumentException("name can't be null or empty")
