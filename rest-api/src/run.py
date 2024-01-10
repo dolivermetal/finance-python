@@ -1,7 +1,7 @@
+import core.src.config.logger as logger
 from config.server import app
-from core.src.config.logger import LoggerConfig
 
-LoggerConfig.configure()
+logger.configure()
 
 if __name__ == '__main__':
     app.run(port=9090)
