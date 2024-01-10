@@ -30,5 +30,5 @@ class PersonService:
             log.info("msg=creation person, person=%s", new_person)
             self.__repository.insert(new_person)
         except Exception as e:
-            log.error("msg=error, e.message=%s", e.__cause__, exc_info=e)
+            log.error(f"msg=error, e.message={e}", exc_info=e)
             raise e

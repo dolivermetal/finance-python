@@ -12,14 +12,10 @@ class DatabaseManager:
 
     def __init__(self) -> None:
         log.debug("initiate database connection")
-        self.__connection_string = "{}://{}:{}@{}:{}/{}".format(
-            'postgresql+psycopg2',
-            DATABASE_CONFIG.get("user"),
-            DATABASE_CONFIG.get("password"),
-            DATABASE_CONFIG.get("host"),
-            DATABASE_CONFIG.get("port"),
-            DATABASE_CONFIG.get("database")
-        )
+        self.__connection_string = (f"postgresql+psycopg2://"
+                                    f"{DATABASE_CONFIG.get('user')}:{DATABASE_CONFIG.get('password')}"
+                                    f"@{DATABASE_CONFIG.get('host')}:{DATABASE_CONFIG.get('port')}"
+                                    f"/{DATABASE_CONFIG.get('database')}")
         self.__engine = self.__create_engine()
         self.session = None
 

@@ -4,7 +4,7 @@ from core.src.config.configs import LOGGING_CONFIG
 
 
 # Carrega a configuração de log para o projeto
-def configure():
+def logger_configure():
     try:
         # console = logging.StreamHandler()
         # console.setFormatter(logging.Formatter(logging_config.get("format")))

@@ -5,14 +5,13 @@ repos:
         name: pylint
         entry: pylint core rest-api
         language: system
-        types: [python]
+        types:
+          - python
         args:
-        [
-          "-rn",
-          "-sn",
-         "--rcfile=.pylintrc"
-          "--load-plugins=pylint.extensions.docparams"
-        ]
+          - "--rcfile=.pylintrc"
+          - "--load-plugins=pylint.extensions.docparams"
+        #          - "-rn"
+        #          - "-sn"
   - repo: local
     hooks:
       - id: requirements
