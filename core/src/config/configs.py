@@ -15,4 +15,4 @@ try:
             LOGGING_CONFIG = __config.get("logging")
 
 except Exception as e:
-    log.error("msg=error, e.message=%s", str(e), e)
+    log.error("msg=error, e.message=%s", str(e), exc_info=e)
