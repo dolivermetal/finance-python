@@ -15,7 +15,7 @@ class LoggerConfig:
             # logging.getLogger().addHandler(console)
             logging.basicConfig(level=LOGGING_CONFIG.get("level"), format=LOGGING_CONFIG.get("format"))
 
-        except Exception as e:
+        except KeyError:
             logging.basicConfig(
                 level=logging.INFO,
                 format="%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] - %(message)s"
