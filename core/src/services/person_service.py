@@ -21,14 +21,14 @@ class PersonService:
 
     # Busca uma pessoa dado o seu código
     def find_by_code(self, code) -> Person:
-        log.info(f"msg=finding person, code={code}")
+        log.info("msg=finding person, code=%s", code)
         return self.__repository.find_by_code(code=code)
 
     # Cria uma entidade pessoa
     def create_person(self, new_person: Person) -> None:
         try:
-            log.info(f"msg=creation person, person={new_person}")
+            log.info("msg=creation person, person=%s", new_person)
             self.__repository.insert(new_person)
         except Exception as e:
-            log.error(f"msg=error, e.message={e.__cause__}", e)
+            log.error("msg=error, e.message=%s", e.__cause__, e)
             raise e
