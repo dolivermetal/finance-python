@@ -4,15 +4,15 @@ import yaml
 
 log = logging.getLogger(__name__)
 
-database_config = None
-logging_config = None
+DATABASE_CONFIG = None
+LOGGING_CONFIG = None
 
 try:
-    if database_config is None or logging_config is None:
+    if DATABASE_CONFIG is None or LOGGING_CONFIG is None:
         with open("../core/resources/config.yml", "r") as __config_file:
             __config = yaml.safe_load(__config_file)
-            database_config = __config.get("database")
-            logging_config = __config.get("logging")
+            DATABASE_CONFIG = __config.get("database")
+            LOGGING_CONFIG = __config.get("logging")
 
 except Exception as e:
     log.error(f"msg=error, e.message={e}", e)

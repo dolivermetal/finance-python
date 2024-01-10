@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from core.src.config.configs import database_config
+from core.src.config.configs import DATABASE_CONFIG
 
 log = logging.getLogger(__name__)
 
@@ -14,18 +14,18 @@ class DatabaseManager:
         log.debug("initiate database connection")
         self.__connection_string = "{}://{}:{}@{}:{}/{}".format(
             'postgresql+psycopg2',
-            database_config.get("user"),
-            database_config.get("password"),
-            database_config.get("host"),
-            database_config.get("port"),
-            database_config.get("database")
+            DATABASE_CONFIG.get("user"),
+            DATABASE_CONFIG.get("password"),
+            DATABASE_CONFIG.get("host"),
+            DATABASE_CONFIG.get("port"),
+            DATABASE_CONFIG.get("database")
         )
         self.__engine = self.__create_engine()
         self.session = None
 
     def __create_engine(self):
         log.debug("creating engine")
-        engine = create_engine(self.__connection_string, echo=database_config.get("echo"))
+        engine = create_engine(self.__connection_string, echo=DATABASE_CONFIG.get("echo"))
         return engine
 
     def get_engine(self):
@@ -34,7 +34,7 @@ class DatabaseManager:
 
     def __enter__(self):
         log.debug("open session")
-        session_make = sessionmaker(bind=self.__engine, expire_on_commit=database_config.get("expire_on_commit"))
+        session_make = sessionmaker(bind=self.__engine, expire_on_commit=DATABASE_CONFIG.get("expire_on_commit"))
         self.session = session_make()
         return self
 

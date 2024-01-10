@@ -1,6 +1,6 @@
 import logging
 
-from core.src.config.configs import logging_config
+from core.src.config.configs import LOGGING_CONFIG
 
 
 # Configuração de Log
@@ -13,7 +13,7 @@ class LoggerConfig:
             # console = logging.StreamHandler()
             # console.setFormatter(logging.Formatter(logging_config.get("format")))
             # logging.getLogger().addHandler(console)
-            logging.basicConfig(level=logging_config.get("level"), format=logging_config.get("format"))
+            logging.basicConfig(level=LOGGING_CONFIG.get("level"), format=LOGGING_CONFIG.get("format"))
 
         except Exception as e:
             logging.basicConfig(
