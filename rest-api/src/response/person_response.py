@@ -1,10 +1,9 @@
-from datetime import datetime
-
-from sqlalchemy import String, BigInteger
+from typing import Dict
 
 from core.src.entities.person import Person
 
 
+# pylint: disable=too-few-public-methods
 class PersonResponse:
 
     def __init__(self, person: Person) -> None:
@@ -13,5 +12,5 @@ class PersonResponse:
         self.name = person.name
         self.creation_date = person.creation_date
 
-    def format_response(self) -> dict[str, String | BigInteger | datetime]:
+    def format_response(self) -> Dict:
         return {'id': self.id, 'code': self.code, 'name': self.name, 'creation_date': self.creation_date}

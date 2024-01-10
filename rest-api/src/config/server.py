@@ -1,18 +1,18 @@
 import logging
 
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 
-from controller.person_controller import person_blueprint
-from core.src.exceptions.illegal_argument_exception import IllegalArgumentException
 from exceptions.http_not_found import HttpNotFoundException
 from exceptions.http_unsupported_media_type import HttpUnsupportedMediaTypeException
 from response.http_response import HttpResponse
-from .configs import flask_config
+from controller.person_controller import person_blueprint
+from core.src.exceptions.illegal_argument_exception import IllegalArgumentException
+from .configs import FLASK_CONFIG
 
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-app.config.update(flask_config)
+app.config.update(FLASK_CONFIG)
 
 # Registro das rotas no flask
 app.register_blueprint(person_blueprint)
@@ -51,7 +51,7 @@ def exception_handler(e: Exception):
     return jsonify(http_response.body), http_response.status_code
 
 
-def create_response(e: (HttpUnsupportedMediaTypeException | IllegalArgumentException | HttpNotFoundException)):
+def create_response(e: (HttpUnsupportedMediaTypeException, IllegalArgumentException, HttpNotFoundException)):
     log.error(f"msg=error, e.status_code={e.status_code}, e.name={e.name}, e.message={e.message}")
     http_response = HttpResponse(e.status_code, e.message)
     return jsonify(http_response.body), http_response.status_code

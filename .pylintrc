@@ -1,16 +1,11 @@
 [MAIN]
 
 disable=
-      C0116, # missing-function-docstring
-      E0015, # unrecognized-option
-      C0114, # missing-module-docstring
-      W0703, # Catching too general exception Exception
-      C0209, # Consider-using-f-string
-      C0321, # Multiple-statements
-      W0221, # Arguments-differ
-      R0801, # Duplicate-code
-      C0115, # missing-class-docstring
-      R0903, # too-few-public-methods
+    C0114, # Missing module docstring (missing-module-docstring)
+    C0115, # Missing class docstring (missing-class-docstring)
+    C0116, # Missing function or method docstring (missing-function-docstring)
+    W0718, # Catching too general exception Exception (broad-exception-caught)
+    W1203, # Use %s formatting in logging functions
 
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
@@ -80,7 +75,7 @@ ignored-modules=
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
-#init-hook=
+#init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use, and will cap the count on Windows to
@@ -110,7 +105,8 @@ recursive=no
 # source root is an absolute path or a path relative to the current working
 # directory used to determine a package namespace for modules located under the
 # source root.
-source-roots=
+source-roots=core/src,
+             rest-api/src
 
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
@@ -228,7 +224,7 @@ method-naming-style=snake_case
 #method-rgx=
 
 # Naming style matching correct module names.
-module-naming-style=snake_case
+module-naming-style=any
 
 # Regular expression matching correct module names. Overrides module-naming-
 # style. If left empty, module names will be checked with the set naming style.

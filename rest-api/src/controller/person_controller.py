@@ -2,11 +2,11 @@ import logging
 
 from flask import Blueprint, request, jsonify
 
-from core.src.services.person_service import PersonService
 from entities.person import Person
 from exceptions.http_not_found import HttpNotFoundException
 from response.http_response import HttpResponse
 from response.person_response import PersonResponse
+from core.src.services.person_service import PersonService
 
 log = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ __service = PersonService()
 
 @person_blueprint.route('/persons', methods=['GET'])
 def find_all_persons():
-    log.info(f"msg=listing all persons")
+    log.info("msg=listing all persons")
     persons = __service.find_all()
 
     if len(persons) == 0:

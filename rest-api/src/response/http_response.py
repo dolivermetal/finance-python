@@ -1,3 +1,4 @@
+# pylint: disable=too-few-public-methods
 class HttpResponse:
 
     def __init__(self, status_code, body) -> None:
